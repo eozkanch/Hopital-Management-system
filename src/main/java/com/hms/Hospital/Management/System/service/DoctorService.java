@@ -13,14 +13,14 @@ public class DoctorService {
 
 
     @Autowired
-    private DoctorRepository doctorRepository;
+    private DoctorRepository<Doctor> doctorRepository;
 
     public List<Doctor> findAll() {
         return doctorRepository.findAll();
     }
 
     public Doctor findById(String id) throws Throwable {
-        return (Doctor) doctorRepository.findById(id)
+        return doctorRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Doctor", "id", id));
     }
 

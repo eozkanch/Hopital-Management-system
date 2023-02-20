@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/patients")
-@RequiredArgsConstructor
+
 public class PatientController {
 
     private final PatientService patientService;
+
+    public PatientController(PatientService patientService) {
+        this.patientService = patientService;
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Patient> getPatient(@PathVariable String id) throws Throwable {

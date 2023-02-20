@@ -11,10 +11,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/appointments")
-@RequiredArgsConstructor
+
 public class AppointmentController {
 
     private final AppointmentService appointmentService;
+
+    public AppointmentController(AppointmentService appointmentService) {
+        this.appointmentService = appointmentService;
+    }
 
     @PostMapping
     public ResponseEntity<Appointment> createAppointment(@RequestBody Appointment appointment) {
